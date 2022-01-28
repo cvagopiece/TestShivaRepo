@@ -22,7 +22,7 @@ data "azurerm_client_config" "current" {}
 # Create a resource group
 resource "azurerm_resource_group" "dev-rg" {
   name     = "dev-environment-rg"
-  location = "South Central US"
+  location = "eastus"
 }
 
 # Create app service plan
@@ -43,7 +43,7 @@ resource "azurerm_app_service_plan" "service-plan" {
 
 # Create JAVA app service
 resource "azurerm_app_service" "app-service" {
-  name = "my-awesome-app-svc"
+  name = "my-sgm-app-svc"
   location = azurerm_resource_group.dev-rg.location
   resource_group_name = azurerm_resource_group.dev-rg.name
   app_service_plan_id = azurerm_app_service_plan.service-plan.id
